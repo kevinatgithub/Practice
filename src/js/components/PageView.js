@@ -10,9 +10,9 @@ export default class PageView extends React.Component{
         return(
             <div>
                 <Route exact path="/" component={Welcome} />
-                {links.map((page) => {
+                {links.map((page,i) => {
                     return (
-                        <Route path={page.path} component={page.component} />
+                        <Route key={i} path={page.path} component={page.component} />
                     )
                 })}
             </div>
