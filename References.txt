@@ -1,0 +1,7 @@
+https://github.com/airbnb/javascript#properties
+https://github.com/airbnb/javascript/tree/master/react
+https://www.npmjs.com/package/eslint-plugin-react
+https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-prop-types.md
+https://www.npmjs.com/package/react-prop-types
+https://stackoverflow.com/questions/34678314/webpack-cant-find-module-if-file-named-jsx
+https://facebook.github.io/react/docs/typechecking-with-proptypes.html
