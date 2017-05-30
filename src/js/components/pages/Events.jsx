@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { Row, Col, Card } from 'antd';
 
 import events from '../SampleEvents';
 import EventView from './EventView';
@@ -15,29 +16,27 @@ export default class Events extends React.Component {
 
     render() {
         return (
-          <div>
-            <div className="row">
-              <div className="col-lg-12">
-                <h3>Events</h3>
-              </div>
-              <hr />
-              <div className="col-lg-6">
-                <Route path={'/events/:id'} component={EventView} />
-              </div>
-
-            </div>
-            <div className="row">
-
-              {this.state.events.map(event => (
-                <div className="col-lg-4" key={event.id}>
-                  <EventTitle event={event} />
-                  <br />
-                  {event.description.substr(0, 30)}..
-                  <br /><br />
-                </div>
-              ))}
-            </div>
-          </div>
+          <Row gutter={16}>
+            <Col span={20}>
+              <Card title="Events">
+                <Row gutter={16}>
+                  <Col span={6}>
+                    <Route path={'/events/:id'} component={EventView} />
+                  </Col>
+                </Row>
+                <Row gutter={16}>
+                  {this.state.events.map(event => (
+                    <Col span={12} key={event.id}>
+                      <EventTitle event={event} />
+                      <br />
+                      {event.description.substr(0, 30)}..
+                      <br /><br />
+                    </Col>
+                  ))}
+                </Row>
+              </Card>
+            </Col>
+          </Row>
         );
     }
 }

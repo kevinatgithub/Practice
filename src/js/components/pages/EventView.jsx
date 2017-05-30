@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Card } from 'antd';
 import events from '../SampleEvents';
 
 export default class EventView extends React.Component {
@@ -17,13 +18,10 @@ export default class EventView extends React.Component {
         const event = this.state.events.find(e => e.id === (id * 1));
 
         return (
-          <div className="panel panel-default">
-            <div className="panel-body">
-              <p>ID : {event.id}</p>
-              <h4>{event.title}</h4>
-              <p><i>{event.description}</i></p>
-            </div>
-          </div>
+          <Card title={event.title} >
+            <p>ID : {event.id}</p>
+            <p><i>{event.description}</i></p>
+          </Card>
         );
     }
 }

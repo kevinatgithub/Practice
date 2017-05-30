@@ -1,5 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { LocaleProvider, Layout, Row, Col } from 'antd';
+import enUS from 'antd/lib/locale-provider/en_US';
+import 'antd/dist/antd.css';
 
 import SideNav from './SideNav';
 import PageView from './PageView';
@@ -8,29 +11,35 @@ import PageView from './PageView';
 import Admin from './pages/Admin';
 import Events from './pages/Events';
 
+
 const Root = () => {
+    const { Header, Footer, Content, Sider } = Layout;
     const links = [
         { id: 0, title: 'Administration', path: '/admin', component: Admin },
         { id: 1, title: 'Events', path: '/events', component: Events },
     ];
 
     return (
-      <div className="container">
-
+      <LocaleProvider locale={enUS}>
         <Router>
-          <div className="page-header" id="banner">
-            <div className="row">
-              <div className="col-lg-3">
+          <Layout>
+            <Header> <h2 style={{ color: '#fff' }}>Practice React with Ant Design</h2> </Header>
+            <Layout>
+              <Sider>
                 <SideNav links={links} />
-              </div>
-              <div className="col-lg-9">
-                <PageView links={links} />
-              </div>
-            </div>
-          </div>
+              </Sider>
+              <Content>
+                <Row gutter={8} >
+                  <Col span={68} >
+                    <PageView links={links} />
+                  </Col>
+                </Row>
+              </Content>
+            </Layout>
+            <Footer> Copyright &copy; 2017 </Footer>
+          </Layout>
         </Router>
-      </div>
-
+      </LocaleProvider>
     );
 };
 
