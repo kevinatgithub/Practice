@@ -2,11 +2,11 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Welcome from './pages/Welcome';
+import Admin from './admin/Admin';
 
 const PageView = ({ links }) => (
-  <div>
-    <Route exact path="/" component={Welcome} />
+  <div style={{ padding: 24, minHeight: 450 }}>
+    <Route exact path="/" component={Admin} />
     {links.map(page => (
       <Route key={page.id} path={page.path} component={page.component} />
     ))}

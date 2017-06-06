@@ -1,4 +1,5 @@
 const path = require('path');
+const combineLoaders = require('webpack-combine-loaders');
 
 module.exports = {
     context: path.join(__dirname, 'src'),
@@ -25,10 +26,24 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                 { loader: 'style-loader' },
-                 { loader: 'css-loader' },
-                ],
+                use: ['style-loader', 'css-loader'],
+                include: /(node_modules|bower_components)/,
+            },
+            {
+                test: /\.css$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: combineLoaders([
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                        query: {
+                            modules: true,
+                            localIdentName: '[name]__[local]___[hash:base64:5]',
+                        },
+                    },
+                ]),
             },
         ],
     },

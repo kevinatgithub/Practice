@@ -1,22 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { LocaleProvider, Layout, Row, Col } from 'antd';
+import LocaleProvider from 'antd/lib/locale-provider';
 import enUS from 'antd/lib/locale-provider/en_US';
+import Layout from 'antd/lib/layout';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
 import 'antd/dist/antd.css';
 
 import SideNav from './SideNav';
 import PageView from './PageView';
 
 
-import Admin from './pages/Admin';
-import Events from './pages/Events';
+import Admin from './admin/Admin';
+import Events from './events/MyEvents';
 
 
 const Root = () => {
     const { Header, Footer, Content, Sider } = Layout;
     const links = [
         { id: 0, title: 'Administration', path: '/admin', component: Admin },
-        { id: 1, title: 'Events', path: '/events', component: Events },
+        { id: 1, title: 'My Events', path: '/events', component: Events },
     ];
 
     return (
@@ -25,7 +28,7 @@ const Root = () => {
           <Layout>
             <Header> <h2 style={{ color: '#fff' }}>Practice React with Ant Design</h2> </Header>
             <Layout>
-              <Sider>
+              <Sider breakpoint="sm" >
                 <SideNav links={links} />
               </Sider>
               <Content>
